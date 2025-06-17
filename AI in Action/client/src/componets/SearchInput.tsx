@@ -9,7 +9,7 @@ import axios from "axios";
 import SearchResult from "../interfaces/SearchResult";
 
 function SearchInput(props: {onSuccess: Function, onError: Function}) {
-    const [searchQuery, setSearchQuery] = React.useState("Quantum mechanics analysis using algebraic graph theory")
+    const [searchQuery, setSearchQuery] = React.useState("")
     const [loading, setLoading] = React.useState(false);
 
     const searchClick = () => {
