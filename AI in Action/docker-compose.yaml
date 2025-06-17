@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  server:
+    build: ./server
+    image: ai-in-action-server
+    container_name: server
+    ports:
+      - "8000:8000"
+    environment:
+      - API_PORT=8000
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - app_network
+  redis:
+    build: ./client
+    image: ai-in-action-client
+    container_name: client
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - server
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - app_network
+networks:
+  app_network:
+    driver: bridge

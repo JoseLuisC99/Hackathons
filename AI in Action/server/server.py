@@ -1,5 +1,6 @@
 import json
 import os
+import datetime
 from contextlib import asynccontextmanager
 from typing import List
 
@@ -76,9 +77,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get('/health')
+def health_check():
+    return json.dumps({
+        "status": "UP",
+        "timestamp": datetime.datetime.now().isoformat()
+    })
 
 @app.post("/embedding")
 def embedding(input_embedding: InputEmbedding):

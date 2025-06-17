@@ -33,3 +33,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+### Required environment variables
+Set the next variables in your environment:
+
+| Environment variable | Use                   |
+|----------------------|-----------------------|
+| REACT_APP_API_URL    | Server URL of the API |
+
