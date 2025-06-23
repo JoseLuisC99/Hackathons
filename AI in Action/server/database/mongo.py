@@ -3,12 +3,11 @@ from bson import ObjectId
 from bson.json_util import dumps
 from bson.json_util import loads
 from pymongo.mongo_client import MongoClient
-import ssl
 
 
 class AtlasClient:
     def __init__(self, atlas_uri: str, dbname: str):
-        self.mongodb_client = MongoClient(atlas_uri, ssl_cert_reqs=ssl.CERT_NONE)
+        self.mongodb_client = MongoClient(atlas_uri)
         self.database = self.mongodb_client[dbname]
 
     def ping(self):
